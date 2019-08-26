@@ -1,0 +1,31 @@
+.ce
+{
+    text-align: center;
+    padding : 20px 0px 20px 0;
+}
+
+.padd
+{
+    padding : 20px;
+}
+
+.marg_30
+{
+    margin-top: 30px;
+}
+
+.marg_20
+{
+    margin-top: 20px;
+}
+
+.review
+{
+    font-size: 12px;
+}
+
+.scroll_rev
+{
+  height: 420px;
+  overflow-y:scroll;
+}

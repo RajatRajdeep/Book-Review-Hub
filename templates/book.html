@@ -1,0 +1,75 @@
+{%extends "layout.html" %}
+{% block title %}
+  Book Review Hub
+{% endblock %}
+
+{% block body %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        rangeprint();
+    });
+    
+    function rangeprint() 
+    {
+        document.querySelector('#ratelabel').innerHTML= "Rating : "+document.querySelector("input.custom-range").value;
+    }
+</script>
+<div class="container">
+    <br>
+    <div class="row" >
+        <div class="col-md-2 col-sm-12">    
+            <img src="{{ data[1][6][0][8][3].text }}" alt="{{ data[1][6][0][8][1].text }}">
+        </div>
+        <div class="col-md-10 col-sm-12">
+                <h2 class="mt-0">{{ title }}</h2>
+                <div class="mt-0">Author : {{ data[1][6][0][8][2][1].text }}</div>
+                <div class="mt-0">ISBN  : {{ isbn }}</div>
+                <div class="mt-0">Average Rating : {{ data[1][6][0][7].text }}</div>
+                <div class="mt-0">Publication Year : {{ data[1][6][0][4].text }}</div>
+        </div>    
+    </div>
+    <div class="row marg_30">
+            <h2 >Description</h2>
+            <p>
+                {{ rev_data[1][16].text | safe }}
+            </p>    
+    </div>
+    <div class="row marg_30">
+            <h2 >Reviews</h2>
+    </div>
+    
+    <div class="row ">
+        <div class="col-md-7 col-sm-12">{{ rev_data[1][27].text | safe }}</div>
+        <div class="col-md-5 marg_20 scroll_rev col-sm-12">    
+            {% for rev in rev_all :%}
+                <span>By : {{rev.name}}  </span>
+                <br>
+                <span>Rating : {{rev.rating}}/5</span>
+                <div class="review" >
+                    {{rev.review}}
+                </div> 
+                <hr>    
+            {% endfor %}
+            
+            {% if not rev_row : %}
+                <form action="{{ url_for('book', title=title) }}"  method="post">
+                    <div class="row">
+                        <label id="ratelabel">Rating</label>
+                        <input type="range" onchange="rangeprint()" name="rating" class="custom-range" min="1" max="5" step="0.5" id="customRange3">
+                    </div>
+                        
+                    <div class="row">
+                      <label for="validationServer01">What did you think?</label>
+                        <textarea type="textarea" name="review" class="form-control " id="validationServer01" placeholder="Enter your review" required></textarea>
+                    </div>
+
+                    <div class="row marg_20">
+                        <button class="btn" type="submit">Submit Review</button>
+                    </div>    
+                </form>
+            {% endif %}
+        </div>
+    </div>
+    
+</div>
+{% endblock %} 

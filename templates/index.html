@@ -1,0 +1,22 @@
+{%extends "layout.html" %}
+
+{% block title %}
+  Book Review Hub
+{% endblock %}
+
+{% block body %}
+<h1 class="text-center padd">Book Review Hub</h1>
+
+    <form action="{{ url_for('result') }}" method="POST" class="padd container " >
+        <div class="row justify-content-center  padd">
+            <input class="form-control mr-sm-2 col-md-8" name="book_name" type="search" placeholder="Search" aria-label="Search">
+        </div>
+        <div class="row justify-content-center padd">
+            <button class="btn btn-outline-success my-2  justify-content-center   my-sm-0" type="submit">Search</button>
+        </div>
+        <div class="row justify-content-center padd">
+            <h3>{{msg}}</h3>
+        </div>
+        
+    </form>
+{% endblock %} 

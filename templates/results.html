@@ -1,0 +1,36 @@
+{%extends "layout.html" %}
+{% block title %}
+  Book Review Hub
+{% endblock %}
+
+{% block body %}
+
+
+
+<div class="container">
+    
+    <form action="{{ url_for('result') }}" method="POST" class="padd container " >
+        <div class="row justify-content-center  padd">
+            <input class="form-control mr-sm-2 col-md-8" name="book_name" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2  my-sm-0" type="submit">Search</button>
+        </div>
+    </form>
+    
+    <br>
+    <h2 class="text-info ">Results...</h2>
+    
+    
+    {% for i in range(len) %}
+        <div class="media">
+            <img src="{{ rootlist[i][1][6][0][8][3].text }}" class="align-self-start mr-3" >
+            <div class="media-body">
+                <a href="{{ url_for('book', title=booktit_list[i]) }}"><h4 class="mt-0">{{ booktit_list[i] }}</h4></a>
+                <h6 class="mt-0">Author : {{ rootlist[i][1][6][0][8][2][1].text }}</h6>
+                <h6 class="mt-0">Average Rating : {{ rootlist[i][1][6][0][7].text }}</h6>
+                <h6 class="mt-0">Publication Year : {{ rootlist[i][1][6][0][4].text }}</h6>
+            </div>
+        </div>
+        <hr>
+    {% endfor %}
+</div>
+{% endblock %} 
