@@ -1,5 +1,4 @@
 # Project 1 : Book Review Hub
-Web Programming with Python and JavaScript
 Book Review Hub is book review website. Users will be able to register for this website and then log in using their email and password. Once they log in, they will be able to search for books, leave reviews for individual books, and see the reviews made by other people. Project also uses a third-party API by Goodreads, another book review website, to pull in ratings from a broader audience.
 
 ## Features
